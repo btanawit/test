@@ -34,4 +34,4 @@ RUN gpg --allow-secret-key-import --import /tmp/key/private.key
 RUN echo '* * * * * /tmp/script/decrypt.sh' >> /var/spool/cron/root
 #***** Set Crontab *****
 
-CMD ["crond", "-n"]
+#CMD ["crond", "-n"]
