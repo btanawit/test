@@ -30,8 +30,11 @@ COPY private.key /tmp/key
 RUN gpg --import /tmp/key/public.key; 
 RUN gpg --allow-secret-key-import --import /tmp/key/private.key
 
+# Add a new user "cronjob" with user id 10001
+RUN useradd -u 10001 cronjob
+
 #***** Set Crontab *****
-RUN echo '* * * * * /tmp/script/decrypt.sh' >> /var/spool/cron/root
+RUN echo '* * * * * /tmp/script/decrypt.sh' >> /var/spool/cron/cronjob
 #***** Set Crontab *****
 
 CMD ["crond", "-n","-p"]
