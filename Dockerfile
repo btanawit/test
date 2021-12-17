@@ -35,3 +35,4 @@ RUN echo '* * * * * /tmp/script/decrypt.sh' >> /var/spool/cron/root
 #***** Set Crontab *****
 
 #CMD ["crond", "-n"]
+CMD ["/usr/sbin/init"]
