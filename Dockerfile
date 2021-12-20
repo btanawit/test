@@ -27,6 +27,7 @@ RUN chmod +x /tmp/script/decrypt.sh
 COPY key.secret /tmp/key
 COPY public.key /tmp/key
 COPY private.key /tmp/key
+COPY *.gpg /tem/infile
 RUN gpg --import /tmp/key/public.key; 
 RUN gpg --allow-secret-key-import --import /tmp/key/private.key
 
@@ -37,5 +38,5 @@ RUN useradd -u 10001 cronjob
 RUN echo '* * * * * /tmp/script/decrypt.sh' >> /var/spool/cron/cronjob
 #***** Set Crontab *****
 
-CMD ["crond", "-n","-p"]
-#CMD ["/usr/sbin/init"]
+#CMD ["crond", "-n","-p"]
+CMD ["/usr/sbin/init"]
